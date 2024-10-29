@@ -1,4 +1,10 @@
 import React, {Component} from 'react';
+import LikeButton from './LikeButton';
+import TodoList from './TodoList';
+import AppNew from './TodoListNew';
+
+
+
 
 import logo from './logo.svg';
 import './App.css';
@@ -14,21 +20,9 @@ function MessageFunky(props){
   return <p>{props.message}</p>
 }
 
-
-function LikeButton (){
-  const[likes, setLikes] = React.useState(0); //Initialwert 0 für 'likes'.
-
-  function handleClick(){
-      setLikes(likes + 1);
-  }
-
-  return <button onClick={handleClick}>Like--({likes})--</button>
-}
-
 function App() {
   return (
     <div className="App">
-      <LikeButton  />
       <Message message="classic"/>
       <MessageFunky message="funky" />
       <header className="App-header">
@@ -36,9 +30,12 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <AppNew />
+        <TodoList />
         <p>
           I do it.
         </p>
+        <LikeButton  />
         <a
           className="App-link"
           href="https://reactjs.org"
