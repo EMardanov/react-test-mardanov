@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import LikeButton from './LikeButton';
-import TodoList from './TodoList';
-import AppNew from './TodoListNew';
+import LikeButton from './components/LikeButton';
+import TodoList from './components/TodoList';
+import AppNew from './components/TodoListNew';
 
 
 
@@ -23,12 +23,12 @@ function MessageFunky(props){
 function App() {
   return (
     <div className="App">
-      <Message message="classic"/>
-      <MessageFunky message="funky" />
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <Message message="classic"/>
+          <MessageFunky message="funky" />
         </p>
         <AppNew />
         <TodoList />
@@ -36,14 +36,6 @@ function App() {
           I do it.
         </p>
         <LikeButton  />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

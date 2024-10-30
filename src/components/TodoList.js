@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+function TodoText({text}){
+  return <p>Das steht im Input: {text}</p>
+
+}
+
 function TodoList() {
     const [todos, setTodos] = useState([]); // useState zum Verwalten der Aufgabenliste
     const [newTodo, setNewTodo] = useState(''); // useState zum Verwalten des Eingabefeldes
@@ -9,10 +14,11 @@ function TodoList() {
       setTodos([...todos, newTodo]); // Füge die neue Aufgabe zur Liste hinzu
       setNewTodo(''); // Leere das Eingabefeld
     };
-  
+
     return (
       <div>
         <h1>Todo Liste</h1>
+        <TodoText text = {newTodo} />
         <input 
           type="text" 
           value={newTodo} 
