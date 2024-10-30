@@ -1,5 +1,6 @@
 
 import React, { Component, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 import LikeButton from "./components/LikeButton";
 import TodoList from './components/TodoList';
@@ -29,16 +30,31 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Router>
+        <Header />
+        <nav>
+          <Link to="/">Home</Link>
+          <br />
+          <Link to="/kontakt">Kontakt</Link>
+          <br />
+          <Link to="/todo-list">TodoList</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<LikeButton />} />
+          <Route path="/kontakt" element={<ContactForm />} />
+          <Route path="/todo-list" element={<TodoList todos={todos} setTodos={setTodos} />} />
+        </Routes>
+      </Router>
       <TodoView todos={todos} />
-      <ContactForm />
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           <Message message="classic" />
           <MessageFunky message="funky" />
         </p>
-        <LikeButton />
-        <TodoList todos={todos} setTodos={setTodos} />
+        
+        
       </header>
     </div>
   );
