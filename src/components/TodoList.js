@@ -21,7 +21,7 @@ function TodoList({todos, setTodos}) {
     if (storedTodos) {
       setTodos(JSON.parse(storedTodos)); // Lade Todos aus localStorage
     }
-  }, []);
+  }, [setTodos]);
 
   const addTodo = () => {
     if (newTodo.trim()) {
