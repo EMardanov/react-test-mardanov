@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function TodoText({text}){
   return <p>Das steht im Input: {text}</p>
@@ -8,6 +8,19 @@ function TodoText({text}){
 function TodoList() {
     const [todos, setTodos] = useState([]); // useState zum Verwalten der Aufgabenliste
     const [newTodo, setNewTodo] = useState(''); // useState zum Verwalten des Eingabefeldes
+
+    useEffect(() => {
+      if(todos.length > 0) {
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+    }, [todos]);
+    
+    useEffect(() => {
+      const storedTodos = localStorage.getItem("todos");
+      if (storedTodos) {
+        setTodos(JSON.parse(storedTodos)); // Lade Todos aus localStorage
+      }
+    }, []);
   
     const handleAddTask = () => {
       if (newTodo.trim() === '') return; // Überprüfe, ob das Eingabefeld leer ist
